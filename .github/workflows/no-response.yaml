@@ -5,9 +5,9 @@ name: No Response
 on:
   issue_comment:
     types: [created]
-  schedule:
-    # Schedule for five minutes after the hour, every 12 hours
-    - cron: '5 */12 * * *'
+  # schedule:
+  #   # Schedule for five minutes after the hour, every 12 hours
+  #   - cron: '5 */12 * * *'
 
 # By specifying the access of one of the scopes, all of those that are not
 # specified are set to 'none'.
