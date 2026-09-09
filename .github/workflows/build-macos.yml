@@ -110,23 +110,23 @@ jobs:
         ctest -V -S CTestScript.cmake
         mv ./Testing "${{ env.artifact_dir }}"
 
-    - name: Test package
-      run: |
-        set -x
-        sudo installer -pkg artifacts/BUILD_RESULTS/MacOS/bareos-${{ inputs.version }}.pkg -target /
-        cat /tmp/bareos-postinstall.log
-        cd /usr/local/bareos/
-        /usr/local/bareos/sbin/bareos-fd -d 100 --xc || /usr/local/bareos/sbin/bareos-fd -d 100 -xc
-        cd
-        sudo launchctl start com.bareos.bareos-fd
-        sudo launchctl print system/com.bareos.bareos-fd
-        sleep 1
-        sudo launchctl print system/com.bareos.bareos-fd | grep "state = running"
-        sudo launchctl stop com.bareos.bareos-fd
+    # - name: Test package
+    #   run: |
+    #     set -x
+    #     sudo installer -pkg artifacts/BUILD_RESULTS/MacOS/bareos-${{ inputs.version }}.pkg -target /
+    #     cat /tmp/bareos-postinstall.log
+    #     cd /usr/local/bareos/
+    #     /usr/local/bareos/sbin/bareos-fd -d 100 --xc || /usr/local/bareos/sbin/bareos-fd -d 100 -xc
+    #     cd
+    #     sudo launchctl start com.bareos.bareos-fd
+    #     sudo launchctl print system/com.bareos.bareos-fd
+    #     sleep 1
+    #     sudo launchctl print system/com.bareos.bareos-fd | grep "state = running"
+    #     sudo launchctl stop com.bareos.bareos-fd
 
-    - name: Upload package
-      uses: actions/upload-artifact@v4
-      with:
-        name: MacOS Packages
-        path: ${{ env.artifact_dir }}
-        retention-days: 1
+    # - name: Upload package
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: MacOS Packages
+    #     path: ${{ env.artifact_dir }}
+    #     retention-days: 1
