@@ -8,10 +8,12 @@ on:
         description: "The resulting version number of the build"
         required: true
         type: string
+        default: "1.0"
       timestamp:
         description: "The timestamp of the version"
-        required: true
+        required: false
         type: number
+        default: 10000
       repository:
         description: "The repository to retrieve the sources from"
         required: false
