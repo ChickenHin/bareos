@@ -7,12 +7,12 @@ name: "python packages -> PyPI.org"
 #
 
 on:
-  push:
-    branches:
-      - master
-      - dev/*/master/publish-pypi-*
-    tags:
-      - Release/*
+  # push:
+  #   branches:
+  #     - master
+  #     - dev/*/master/publish-pypi-*
+  #   tags:
+  #     - Release/*
   workflow_dispatch:
     inputs:
       ref:
